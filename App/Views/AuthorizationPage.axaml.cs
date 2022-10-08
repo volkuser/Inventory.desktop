@@ -7,9 +7,9 @@ using ReactiveUI;
 namespace App.Views;
 
 [DoNotNotify]
-public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
+public partial class AuthorizationPage : ReactiveUserControl<AuthorizationPageViewModel>
 {
-    public MainWindow()
+    public AuthorizationPage()
     {
         this.WhenActivated(_ => { });
         AvaloniaXamlLoader.Load(this);

@@ -20,6 +20,6 @@ public class User
     
     [Column("EmployeeId")]
     public int EmployeeId { get; set; }
-    [ForeignKey("EmployerId")]
+    [ForeignKey("EmployeeId")]
     public Employee? Employee { get; set; }
 }

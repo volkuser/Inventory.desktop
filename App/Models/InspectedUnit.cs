@@ -11,7 +11,7 @@ public class InspectedUnit
     
     [Column("InventoryId")]
     public int InventoryId { get; set; }
-    [ForeignKey("Inventory")]
+    [ForeignKey("InventoryId")]
     public Inventory? Inventory { get; set; }
     
     [Column("EquipmentUnitId")]

@@ -7,11 +7,11 @@
         x:Class="App.Views.MainWindow" Title="Инвентаризация"
         Icon="/Assets/avalonia-logo.ico" WindowStartupLocation="CenterScreen"
         Height="600" Width="1000" MinHeight="600" MinWidth="1000">
-        <Grid RowDefinitions="*, 7*">
-                <Button Grid.Row="0" Command="{Binding OnClickBtnBack}"
-                        Content="Назад" IsVisible="{Binding VisibleBtnBack}"
-                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                
-                <reactiveUi:RoutedViewHost Grid.Row="1" Router="{Binding Router}" />
-        </Grid>
+    <Grid RowDefinitions="*, 7*">
+            <Button Grid.Row="0" Command="{Binding OnClickBtnBack}" Classes="round"
+                    Content="Назад" IsVisible="{Binding VisibleBtnBack}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            
+            <reactiveUi:RoutedViewHost Grid.Row="1" Router="{Binding Router}" />
+    </Grid>
 </Window>

@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Windows.Input;
+using App.Models;
+using App.ViewModels.Administrator;
+using App.ViewModels.CommissionMember;
+using App.ViewModels.CommissionPreparer;
 using ReactiveUI;
 
 namespace App.ViewModels;
@@ -26,8 +30,30 @@ public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
 
     public void OpnAuthorizationPage()
     {
-        //var viewModel = new
+        var viewModel = new AuthorizationPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
         AdditionForBtnBackViewHistory(false);
+    }
+    
+    public void OpnAdministratorMenuPage()
+    {
+        var viewModel = new AdministratorMenuPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnCommissionMemberMenuPage(User currentUser)
+    {
+        var viewModel = new CommissionMemberMenuPageViewModel(currentUser, this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnCommissionPreparerMenuPage()
+    {
+        var viewModel = new CommissionPreparerMenuPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
     }
     
     // for return to back

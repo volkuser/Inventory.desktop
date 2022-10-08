@@ -1,15 +1,15 @@
-using App.ViewModels;
+using App.ViewModels.Administrator;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using PropertyChanged;
 using ReactiveUI;
 
-namespace App.Views;
+namespace App.Views.Administrator;
 
 [DoNotNotify]
-public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
+public partial class AdministratorMenuPage : ReactiveUserControl<AdministratorMenuPageViewModel>
 {
-    public MainWindow()
+    public AdministratorMenuPage()
     {
         this.WhenActivated(_ => { });
         AvaloniaXamlLoader.Load(this);
