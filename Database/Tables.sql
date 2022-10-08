@@ -1,21 +1,28 @@
+# DROP DATABASE Inventory;
+
+# CREATE DATABASE Inventory DEFAULT CHARSET utf8;
+# USE Inventory;
+
 CREATE TABLE `Role`(
     `IdRole` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `Name` NVARCHAR(30) NOT NULL UNIQUE CHECK ('^[[:alpha:]]+' REGEXP `Name`)
+    `Name` NVARCHAR(50) NOT NULL UNIQUE CHECK (`Name` REGEXP '^[a-zA-Z а-яА-ЯёЁ]+$')
 );
 
 CREATE TABLE `Employee`(
     `IdEmployee` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `LastName` NVARCHAR(100) NOT NULL CHECK ('[[:alpha:]]+' REGEXP `LastName`),
-    `FirstName` NVARCHAR(100) NOT NULL CHECK ('[[:alpha:]]+' REGEXP `FirstName`),
+    `LastName` NVARCHAR(100) NOT NULL CHECK (`LastName` REGEXP '^[а-яА-Я ёЁ]+$'),
+    `FirstName` NVARCHAR(100) NOT NULL CHECK (`FirstName` REGEXP '^[а-яА-Я ёЁ]+$'),
     `Email` VARCHAR(100) NOT NULL UNIQUE CHECK (`Email` LIKE '%@%.%')
 );
 
 CREATE TABLE `User`(
     `IdUser` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `Login` NVARCHAR(100) NOT NULL UNIQUE,
-    `Password` NVARCHAR(100) NOT NULL,
+    `Password` VARCHAR(100) NOT NULL, # PROGRAM CHECKERS
     `RoleId` INT NOT NULL,
     `EmployeeId` INT NOT NULL,
+
+    CONSTRAINT UQ_USER_LOGIN UNIQUE (`Login`),
 
     FOREIGN KEY (`RoleId`) REFERENCES `Role` (`IdRole`),
     FOREIGN KEY (`EmployeeId`) REFERENCES `Employee` (`IdEmployee`)
@@ -50,20 +57,22 @@ CREATE TABLE `Audience`(
 
 CREATE TABLE `Status`(
     `IdStatus` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `Name` NVARCHAR(30) NOT NULL UNIQUE CHECK ('[[:alpha:]]+' REGEXP `Name`)
+    `Name` NVARCHAR(30) NOT NULL UNIQUE CHECK (`Name` REGEXP '^[a-zA-Z а-яА-ЯёЁ]+$')
 );
 
 CREATE TABLE `State`(
     `IdState` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `Name` NVARCHAR(30) NOT NULL UNIQUE CHECK ('[[:alpha:]]+' REGEXP `Name`)
+    `Name` NVARCHAR(30) NOT NULL UNIQUE CHECK (`Name` REGEXP '^[a-zA-Z а-яА-ЯёЁ]+$')
 );
 
 CREATE TABLE `EquipmentType`(
     `IdEquipmentType` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `Name` NVARCHAR(100) NOT NULL UNIQUE CHECK ('[[:alpha:]]+' REGEXP `Name`)
+    `Name` NVARCHAR(100) NOT NULL UNIQUE CHECK (`Name` REGEXP '^[a-zA-Z а-яА-ЯёЁ]+$')
 );
+
 CREATE TABLE `Equipment`(
     `IdEquipment` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `Name` NVARCHAR(250) NOT NULL UNIQUE,
     `EquipmentTypeId` INT NOT NULL,
 
     FOREIGN KEY (`EquipmentTypeId`) REFERENCES `EquipmentType` (`IdEquipmentType`)
