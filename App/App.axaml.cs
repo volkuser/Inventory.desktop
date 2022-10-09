@@ -44,8 +44,8 @@ public class App : Application
             => new CommissionPreparerMenuPage());
         Locator.CurrentMutable.Register<IViewFor<CommissionControlPageViewModel>>(() 
             => new CommissionControlPage());
-        Locator.CurrentMutable.Register<IViewFor<CommissionMemberMenuPageViewModel>>(() 
-            => new CommissionMemberMenuPage());
+        Locator.CurrentMutable.Register<IViewFor<CommissionMemberControlPageViewModel>>(() 
+            => new CommissionMemberControlPage());
         Locator.CurrentMutable.Register<IViewFor<InspectedUnitControlPageViewModel>>(() 
             => new InspectedUnitControlPage());
         Locator.CurrentMutable.Register<IViewFor<InventoryControlPageViewModel>>(() 
