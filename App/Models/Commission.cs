@@ -11,4 +11,10 @@ public class Commission
     public int IdCommission { get; set; }
     [Column("CommissionFormationDate")]
     public DateTime CommissionFormationDate { get; set; }
+
+    [NotMapped]
+    public DateTimeOffset OffsetCommissionFormationDate
+    {
+        get => new DateTimeOffset(CommissionFormationDate);
+    }
 }
