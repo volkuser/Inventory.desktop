@@ -73,7 +73,6 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
         SelectedValue.LastName = LastName;
         SelectedValue.FirstName = FirstName;
         SelectedValue.Email = Email;
-        Db.Entry(SelectedValue).State = EntityState.Modified;
         Db.Employees!.Update(SelectedValue);
         try { Db.SaveChanges(); } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
