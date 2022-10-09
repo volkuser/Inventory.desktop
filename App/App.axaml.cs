@@ -23,12 +23,33 @@ public class App : Application
     {
         Locator.CurrentMutable.RegisterConstant<IScreen>(new MainWindowViewModel());
         Locator.CurrentMutable.Register<IViewFor<AuthorizationPageViewModel>>(() => new AuthorizationPage());
+        
         Locator.CurrentMutable.Register<IViewFor<AdministratorMenuPageViewModel>>(() 
             => new AdministratorMenuPage());
+        Locator.CurrentMutable.Register<IViewFor<EmployeeControlPageViewModel>>(() => new EmployeeControlPage());
+        Locator.CurrentMutable.Register<IViewFor<TrainingCenterControlPageViewModel>>(() 
+            => new TrainingCenterControlPage());
+        
         Locator.CurrentMutable.Register<IViewFor<CommissionMemberMenuPageViewModel>>(() 
             => new CommissionMemberMenuPage());
+        Locator.CurrentMutable.Register<IViewFor<AudienceControlPageViewModel>>(() => new AudienceControlPage());
+        Locator.CurrentMutable.Register<IViewFor<EquipmentControlPageViewModel>>(() 
+            => new EquipmentControlPage());
+        Locator.CurrentMutable.Register<IViewFor<EquipmentTypeControlViewModel>>(() 
+            => new EquipmentTypeControlPage());
+        Locator.CurrentMutable.Register<IViewFor<EquipmentUnitControlPageViewModel>>(() 
+            => new EquipmentUnitControlPage());
+        
         Locator.CurrentMutable.Register<IViewFor<CommissionPreparerMenuPageViewModel>>(() 
             => new CommissionPreparerMenuPage());
+        Locator.CurrentMutable.Register<IViewFor<CommissionControlPageViewModel>>(() 
+            => new CommissionControlPage());
+        Locator.CurrentMutable.Register<IViewFor<CommissionMemberMenuPageViewModel>>(() 
+            => new CommissionMemberMenuPage());
+        Locator.CurrentMutable.Register<IViewFor<InspectedUnitControlPageViewModel>>(() 
+            => new InspectedUnitControlPage());
+        Locator.CurrentMutable.Register<IViewFor<InventoryControlPageViewModel>>(() 
+            => new InventoryControlPage());
         
 
         new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();

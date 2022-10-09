@@ -3,12 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:reactiveUi="http://reactiveui.net"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="App.Views.MainWindow" Title="Инвентаризация"
+        mc:Ignorable="d" x:Class="App.Views.MainWindow" Title="Инвентаризация"
         Icon="/Assets/avalonia-logo.ico" WindowStartupLocation="CenterScreen"
         Height="600" Width="1000" MinHeight="600" MinWidth="1000">
     <Grid RowDefinitions="*, 7*">
-            <Button Grid.Row="0" Command="{Binding OnClickBtnBack}" Classes="round"
+            <Button Grid.Row="0" Command="{Binding OnClickBtnBack}"
                     Content="Назад" IsVisible="{Binding VisibleBtnBack}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
             

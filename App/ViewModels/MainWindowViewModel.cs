@@ -35,12 +35,30 @@ public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
         AdditionForBtnBackViewHistory(false);
     }
     
+    // login as an administrator
+    
     public void OpnAdministratorMenuPage()
     {
         var viewModel = new AdministratorMenuPageViewModel(this);
         Router.Navigate.Execute(viewModel);
         AdditionForBtnBackViewHistory(true);
     }
+    
+    public void OpnEmployeeControlPage()
+    {
+        var viewModel = new EmployeeControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnTrainingCenterControlPage()
+    {
+        var viewModel = new TrainingCenterControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+
+    // login as an commission member
     
     public void OpnCommissionMemberMenuPage(User currentUser)
     {
@@ -49,9 +67,67 @@ public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
         AdditionForBtnBackViewHistory(true);
     }
     
+    public void OpnAudienceControlPage()
+    {
+        var viewModel = new AudienceControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnEquipmentControlPage()
+    {
+        var viewModel = new EquipmentControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnEquipmentTypeControlPage()
+    {
+        var viewModel = new EquipmentTypeControlViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnEquipmentUnitControlPage(User currentUser)
+    {
+        var viewModel = new EquipmentUnitControlPageViewModel(currentUser, this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    // login as commission preparer
+    
     public void OpnCommissionPreparerMenuPage()
     {
         var viewModel = new CommissionPreparerMenuPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnCommissionMemberControlPage()
+    {
+        var viewModel = new CommissionMemberControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnCommissionControlPage()
+    {
+        var viewModel = new CommissionControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnInspectedUnitControlPage()
+    {
+        var viewModel = new InspectedUnitControlPageViewModel(this);
+        Router.Navigate.Execute(viewModel);
+        AdditionForBtnBackViewHistory(true);
+    }
+    
+    public void OpnInventoryControlPage()
+    {
+        var viewModel = new InventoryControlPageViewModel(this);
         Router.Navigate.Execute(viewModel);
         AdditionForBtnBackViewHistory(true);
     }

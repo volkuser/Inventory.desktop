@@ -7,19 +7,13 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <SimpleTheme Mode="Light"/>
-        
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml"/>
-        
-        <Style Selector="Button.round /template/ ContentPresenter">
-            <Setter Property="CornerRadius" Value="8"/>
-        </Style>
-        <Style Selector="Button:pointerover.round /template/ ContentPresenter"/>
+        <StyleInclude Source="avares://Citrus.Avalonia/Citrus.xaml"/>
+        <StyleInclude Source="resm:Avalonia.Controls.DataGrid.Themes.Default.xaml?assembly=Avalonia.Controls.DataGrid"/>
         
         <Style Selector="TextBlock, TextBox, ComboBox, Button, DatePicker">
             <Setter Property="TextBlock.FontFamily" 
                     Value="avares://App/Assets/Comfortaa-Regular.ttf#Comfortaa"/>
-            <Setter Property="TextBlock.FontSize" Value="25"/>
+            <Setter Property="TextBlock.FontSize" Value="22"/>
         </Style>
     </Application.Styles>
 </Application>
