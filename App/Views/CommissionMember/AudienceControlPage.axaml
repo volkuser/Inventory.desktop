@@ -3,5 +3,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.CommissionMember.AudienceControlPage">
-    Welcome to audience control!
+    <Grid RowDefinitions="*,5*,0.2*" ColumnDefinitions="0.2*,2*,0.1*,*,0.2*">
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Content="Добавить" Command="{Binding OnClickBtnInsert}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Обновить" Command="{Binding OnClickBtnUpdate}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Удалить" Command="{Binding OnClickBtnDelete}"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Grid.Column="1" Items="{Binding Audiences}"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedValue}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Number}"/>
+                <DataGridTemplateColumn Header="Тренинговый центр">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock DataContext="{Binding TrainingCenter}" 
+                                       Text="{Binding Address}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Orientation="Vertical"
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <TextBlock Text="Номер"/>
+            <TextBox Text="{Binding Number}"/>
+            <ComboBox SelectedItem="{Binding TrainingCenter}" Items="{Binding TrainingCenters}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Address}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
 </UserControl>
