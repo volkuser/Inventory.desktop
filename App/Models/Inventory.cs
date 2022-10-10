@@ -9,8 +9,10 @@ public class Inventory
 {
     [Key] [Column("IdInventory")]
     public int IdInventory { get; set; }
-    [Column("EvenDate")]
+    [Column("EventDate")]
     public DateTime EventDate { get; set; }
+    [NotMapped]
+    public DateTimeOffset OffsetEventDate => new DateTimeOffset(EventDate);
     
     [Column("CommissionId")]
     public int CommissionId { get; set; }

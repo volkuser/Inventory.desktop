@@ -3,5 +3,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.CommissionPreparer.InspectedUnitControlPage">
-    Welcome to inspected unit control!
+    <Grid RowDefinitions="*,5*,0.2*" ColumnDefinitions="0.2*,2*,0.1*,*,0.2*">
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Content="Добавить" Command="{Binding OnClickBtnInsert}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Обновить" Command="{Binding OnClickBtnUpdate}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Удалить" Command="{Binding OnClickBtnDelete}"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Grid.Column="1" Items="{Binding InspectedUnits}"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedValue}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Инвентаризация">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker DataContext="{Binding Inventory}"
+                                SelectedDate="{Binding OffsetEventDate}" IsEnabled="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Единица оборудования">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel DataContext="{Binding EquipmentUnit}" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Series}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Number}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Orientation="Vertical"
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <TextBlock Text="Инвентаризация"/>
+            <ComboBox SelectedItem="{Binding Inventory}" Items="{Binding Inventories}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <DatePicker SelectedDate="{Binding OffsetEventDate}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox SelectedItem="{Binding EquipmentUnit}" Items="{Binding EquipmentUnits}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Series}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Number}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
 </UserControl>
