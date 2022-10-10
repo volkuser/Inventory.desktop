@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
 using Splat;
@@ -9,10 +13,81 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
     public string UrlPathSegment => "inventoryControl";
     public IScreen? HostScreen { get; }
     private ApplicationContext Db { get; set; }
+    
+    private ObservableCollection<Inventory> Inventories { get; set; }
+    
+    private List<Commission> Commissions { get; set; }
+
+    private Inventory _selectedValue;
+    public Inventory SelectedValue
+    {
+        get => _selectedValue;
+        set
+        {
+            if (_selectedValue == value) return;
+            _selectedValue = value;
+
+            EventDate = new DateTimeOffset(value.EventDate);
+            Commission = value.Commission;
+        }
+    }
+    
+    private DateTimeOffset EventDate { get; set; }
+    private Commission? Commission { get; set; }
+    
+    private ICommand OnClickBtnInsert { get; set; }
+    private ICommand OnClickBtnUpdate { get; set; }
+    private ICommand OnClickBtnDelete { get; set; }
 
     public InventoryControlPageViewModel(IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
+        
+        Inventories = new ObservableCollection<Inventory>(Db.Inventories!);
+
+        Commissions = new List<Commission>(Db.Commissions!);
+
+        OnClickBtnInsert = ReactiveCommand.Create(Insert);
+        OnClickBtnUpdate = ReactiveCommand.Create(Update);
+        OnClickBtnDelete = ReactiveCommand.Create(Delete);
+    }
+    
+    private void Insert()
+    {
+        Inventory inserting = new Inventory()
+        {
+            EventDate = EventDate.Date,
+            Commission = Commission
+        };
+        Inventories.Add(inserting);
+        Db.Inventories!.Add(inserting);
+        try { Db.SaveChanges(); } catch (Exception ex) {
+            var messageBox = MessageBox.Avalonia.MessageBoxManager
+                .GetMessageBoxStandardWindow("Exception", ex.Message);
+            messageBox.Show();
+        }
+    }
+
+    private void Update()
+    {
+        SelectedValue.EventDate = EventDate.Date;
+        Db.Inventories!.Update(SelectedValue);
+        try { Db.SaveChanges(); } catch (Exception ex) {
+            var messageBox = MessageBox.Avalonia.MessageBoxManager
+                .GetMessageBoxStandardWindow("Exception", ex.Message);
+            messageBox.Show();
+        }
+    }
+
+    private void Delete()
+    {
+        Inventories.Remove(SelectedValue);
+        Db.Inventories!.Remove(SelectedValue);
+        try { Db.SaveChanges(); } catch (Exception ex) {
+            var messageBox = MessageBox.Avalonia.MessageBoxManager
+                .GetMessageBoxStandardWindow("Exception", ex.Message);
+            messageBox.Show();
+        }
     }
 }    
