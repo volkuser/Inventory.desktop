@@ -8,6 +8,7 @@ public class Equipment
 {
     [Key] [Column("IdEquipment")]
     public int IdEquipment { get; set; }
+    public string? Name { get; set; }
     
     [Column("EquipmentTypeId")]
     public int EquipmentTypeId { get; set; }
