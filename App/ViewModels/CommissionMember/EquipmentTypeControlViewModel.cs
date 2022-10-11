@@ -70,6 +70,9 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        EquipmentTypes.Clear();
+        EquipmentTypes = new ObservableCollection<EquipmentType>(Db.EquipmentTypes!);
     }
 
     private void Delete()

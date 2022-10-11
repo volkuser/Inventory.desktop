@@ -70,6 +70,9 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        TrainingCenters.Clear();
+        TrainingCenters = new ObservableCollection<TrainingCenter>(Db.TrainingCenters!);
     }
 
     private void Delete()

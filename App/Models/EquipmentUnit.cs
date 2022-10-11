@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,8 +12,6 @@ public class EquipmentUnit
     public int Series { get; set; }
     [Column("Number")]
     public string? Number { get; set; }
-    [Column("IntroductionDate")]
-    public DateTime IntroductionDate { get; set; }
     
     [Column("StatusId")]
     public int StatusId { get; set; }

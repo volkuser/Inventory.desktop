@@ -81,6 +81,9 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        CommissionMembers.Clear();
+        CommissionMembers = new ObservableCollection<Models.CommissionMember>(Db.CommissionMembers!);
     }
 
     private void Delete()

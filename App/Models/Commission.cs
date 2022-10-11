@@ -13,5 +13,6 @@ public class Commission
     public DateTime CommissionFormationDate { get; set; }
 
     [NotMapped]
-    public DateTimeOffset OffsetCommissionFormationDate => new DateTimeOffset(CommissionFormationDate);
+    public DateTimeOffset OffsetCommissionFormationDate 
+        => new DateTimeOffset(CommissionFormationDate);
 }

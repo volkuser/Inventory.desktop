@@ -79,6 +79,9 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        Employees.Clear();
+        Employees = new ObservableCollection<Employee>(Db.Employees!);
     }
 
     private void Delete()

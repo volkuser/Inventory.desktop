@@ -25,7 +25,7 @@
                 <DataGridTemplateColumn Header="Коммссия">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker DataContext="Commission" 
+                            <DatePicker DataContext="{Binding Commission}" 
                                 SelectedDate="{Binding OffsetCommissionFormationDate}" IsEnabled="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -34,8 +34,9 @@
         </DataGrid>
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Orientation="Vertical"
                     VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <TextBlock Text="Комиссия"/>
+            <TextBlock Text="Дата проедения"/>
             <DatePicker SelectedDate="{Binding EventDate}"/>
+            <TextBlock Text="Комиссия"/>
             <ComboBox SelectedItem="{Binding Commission}" Items="{Binding Commissions}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

@@ -42,7 +42,7 @@
             <ComboBox SelectedItem="{Binding Inventory}" Items="{Binding Inventories}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <DatePicker SelectedDate="{Binding OffsetEventDate}"/>
+                        <DatePicker SelectedDate="{Binding OffsetEventDate}" IsEnabled="False"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>

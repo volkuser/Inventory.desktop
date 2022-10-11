@@ -79,6 +79,9 @@ public class EquipmentControlPageViewModel : ViewModelBase, IRoutableViewModel
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        Equipments.Clear();
+        Equipments = new ObservableCollection<Equipment>(Db.Equipments!);
     }
 
     private void Delete()

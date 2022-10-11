@@ -42,6 +42,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <TextBlock Text="Сотрудник"/>
             <ComboBox SelectedItem="{Binding Employee}" Items="{Binding Employees}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

@@ -79,6 +79,9 @@ public class AudienceControlPageViewModel : ViewModelBase, IRoutableViewModel
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        Audiences.Clear();
+        Audiences = new ObservableCollection<Audience>(Db.Audiences!);
     }
 
     private void Delete()

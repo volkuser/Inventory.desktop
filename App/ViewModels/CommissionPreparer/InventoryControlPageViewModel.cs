@@ -78,6 +78,9 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        Inventories.Clear();
+        Inventories = new ObservableCollection<Inventory>(Db.Inventories!);
     }
 
     private void Delete()

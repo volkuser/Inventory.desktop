@@ -81,6 +81,9 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+        
+        InspectedUnits.Clear();
+        InspectedUnits = new ObservableCollection<InspectedUnit>(Db.InspectedUnits!);
     }
 
     private void Delete()
