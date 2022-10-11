@@ -12,7 +12,7 @@
             <Button Content="Удалить" Command="{Binding OnClickBtnDelete}"/>
         </StackPanel>
         <DataGrid Grid.Row="1" Grid.Column="1" Items="{Binding CommissionMembers}"
-                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserSortColumns="True"
                   AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedValue}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Коммиссия">
