@@ -84,7 +84,6 @@ CREATE TABLE `EquipmentUnit`(
     `Number` NVARCHAR(100) NOT NULL UNIQUE,
     `StatusId` INT NOT NULL,
     `AudienceId` INT NOT NULL,
-    `IntroductionDate` DATE NOT NULL,
     `StateId` INT NOT NULL,
     `EquipmentId` INT NOT NULL,
 

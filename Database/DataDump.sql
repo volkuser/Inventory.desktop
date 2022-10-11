@@ -67,20 +67,13 @@ INSERT INTO Inventory.Equipment (IdEquipment, Name, EquipmentTypeId) VALUES
                                                                    (3, 'черная гелевая', 2),
                                                                    (4, 'Acer cm 30', 1);
 
-INSERT INTO Inventory.EquipmentUnit (IdEquipmentUnit, Series, Number, StatusId, AudienceId,
-                                     IntroductionDate, StateId, EquipmentId) VALUES
-                                                                                 (1, 3245, '234H', 1, 2,
-                                                                                  '2018-09-09', 1, 2),
-                                                                                 (2, 2222, 'G12', 1, 2,
-                                                                                  '2018-06-09', 1, 2),
-                                                                                 (3, 2333, 'FS', 1, 2,
-                                                                                  '2018-03-03', 2, 2),
-                                                                                 (4, 1244, '333', 1, 2,
-                                                                                  '2018-09-09', 2, 1),
-                                                                                 (5, 3245, '2', 1, 2,
-                                                                                  '2018-09-10', 1, 2),
-                                                                                 (6, 2332, '123', 1, 2,
-                                                                                  '2018-01-09', 1, 1);
+INSERT INTO Inventory.EquipmentUnit (IdEquipmentUnit, Series, Number, StatusId, AudienceId, StateId, EquipmentId) VALUES
+                                                                                 (1, 3245, '234H', 1, 2, 1, 2),
+                                                                                 (2, 2222, 'G12', 1, 2, 1, 2),
+                                                                                 (3, 2333, 'FS', 1, 2, 2, 2),
+                                                                                 (4, 1244, '333', 1, 2, 2, 1),
+                                                                                 (5, 3245, '2', 1, 2, 1, 2),
+                                                                                 (6, 2332, '123', 1, 2, 1, 1);
 
 INSERT INTO Inventory.Inventory (IdInventory, EventDate, CommissionId) VALUES
                                                                            (1, '2020-01-01', 1),
