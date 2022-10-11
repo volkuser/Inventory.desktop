@@ -71,8 +71,8 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
             messageBox.Show();
         }
         
-        Employees.Clear();
-        Employees = new ObservableCollection<Employee>(Db.Employees!);
+        Commissions.Clear();
+        Commissions = new ObservableCollection<Commission>(Db.Commissions!);
     }
 
     private void Delete()
