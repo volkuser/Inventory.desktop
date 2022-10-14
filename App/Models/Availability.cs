@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models;
 
-[Table("Status")]
-public class Status
+[Table("Availability")]
+public class Availability
 {
-    [Key] [Column("IdStatus")]
-    public int IdStatus { get; set; }
+    [Key] [Column("IdAvailability")]
+    public int IdAvailability { get; set; }
     [Column("Name")]
     public string? Name { get; set; }
 }

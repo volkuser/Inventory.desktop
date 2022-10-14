@@ -8,20 +8,20 @@ public class EquipmentUnit
 {
     [Key] [Column("IdEquipmentUnit")]
     public int IdEquipmentUnit { get; set; }
-    [Column("Series")]
-    public int Series { get; set; }
-    [Column("Number")]
-    public string? Number { get; set; }
+    [Column("SerialNumber")]
+    public string? SerialNumber { get; set; }
+    [Column("InventoryNumber")]
+    public string? InventoryNumber { get; set; }
     
-    [Column("StatusId")]
-    public int StatusId { get; set; }
-    [ForeignKey("StatusId")]
-    public Status? Status { get; set; }
+    [Column("AvailabilityId")]
+    public int AvailabilityId { get; set; }
+    [ForeignKey("AvailabilityId")]
+    public Availability? Availability { get; set; }
     
-    [Column("AudienceId")]
-    public int AudienceId { get; set; }
-    [ForeignKey("AudienceId")]
-    public Audience? Audience { get; set; }
+    [Column("TrainingCenterId")]
+    public int TrainingCenterId { get; set; }
+    [ForeignKey("TrainingCenterId")]
+    public TrainingCenter? TrainingCenter { get; set; }
     
     [Column("StateId")]
     public int StateId { get; set; }

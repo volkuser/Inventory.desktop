@@ -16,7 +16,7 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
     private ObservableCollection<TrainingCenter> TrainingCenters { get; set; }
 
     private TrainingCenter _selectedValue;
-    public TrainingCenter SelectedValue
+    private TrainingCenter SelectedValue
     {
         get => _selectedValue;
         set
@@ -24,6 +24,7 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
             if (_selectedValue == value) return;
             _selectedValue = value;
             
+            if (value == null) return;
             Address = value.Address;
         }
     }

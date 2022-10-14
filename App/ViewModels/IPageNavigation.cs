@@ -11,7 +11,6 @@ public interface IPageNavigation
     public void OpnTrainingCenterControlPage();
     
     public void OpnCommissionMemberMenuPage(User currentUser);
-    public void OpnAudienceControlPage();
     public void OpnEquipmentControlPage();
     public void OpnEquipmentTypeControlPage();
     public void OpnEquipmentUnitControlPage(User currentUser);

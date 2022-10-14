@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.CommissionMember.CommissionMemberMenuPage">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <!--<Button Content="Управление аудиториями" 
-                Command="{Binding OnClickBtnAudienceControl}"/>-->
         <Button Content="Управление оборудованием" 
                 Command="{Binding OnClickBtnEquipmentControl}"/>
         <Button Content="Управление типами оборудоания" 

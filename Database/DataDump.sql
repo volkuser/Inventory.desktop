@@ -5,10 +5,10 @@ INSERT INTO Inventory.Role (IdRole, Name) VALUES
                                       (2, 'Составитель комиссии'),
                                       (3, 'Член комиссии');
 
-INSERT INTO Inventory.Status (IdStatus, Name) VALUES
-                                                  (1, 'Числится'),
-                                                  (2, 'Эксплуатируется'),
-                                                  (3, 'Утеряно');
+INSERT INTO Inventory.Availability (IdAvailability, Name) VALUES
+                                                              (1, 'Есть на месте'),
+                                                              (2, 'Должно быть в другом месте'),
+                                                              (3, 'Не найдено');
 
 INSERT INTO Inventory.State (IdState, Name) VALUES
                                                 (1, 'Отлично'),
@@ -45,35 +45,27 @@ INSERT INTO Inventory.CommissionMember (IdCommissionMember, CommissionId, Employ
                                                                                           (4, 2, 5);
 
 INSERT INTO Inventory.TrainingCenter (IdTrainingCenter, Address) VALUES
-                                                                     (1, 'st. Lenina, 5'),
-                                                                     (2, 'st. Chehova, 67');
-
-INSERT INTO Inventory.Audience (IdAudience, Number, TrainingCenterId) VALUES
-                                                                          (1, '134A', 1),
-                                                                          (2, '134', 1),
-                                                                          (3, '101', 1),
-                                                                          (4, '101B', 1),
-                                                                          (5, '094', 2),
-                                                                          (6, '020', 2),
-                                                                          (7, '020C', 2);
+                                                                     (1, 'ул. Ленина, 5'),
+                                                                     (2, 'ул. Чехова, 67');
 
 INSERT INTO Inventory.EquipmentType (IdEquipmentType, Name) VALUES
-                                                                (1, 'ПК'),
-                                                                (2, 'ручки');
+                                                                (1, 'персональные компьютеры'),
+                                                                (2, 'проекторы');
 
-INSERT INTO Inventory.Equipment (IdEquipment, Name, EquipmentTypeId) VALUES
-                                                                   (1, 'Asus k8630', 1),
-                                                                   (2, 'шариковая синяя', 2),
-                                                                   (3, 'черная гелевая', 2),
-                                                                   (4, 'Acer cm 30', 1);
+INSERT INTO Inventory.Equipment (IdEquipment, Model, EquipmentTypeId) VALUES
+                                                                   (1, 'ПК DEXP Atlas H341', 1),
+                                                                   (2, 'Epson EB-X500', 2),
+                                                                   (3, 'Rombica Ray Box W1', 2),
+                                                                   (4, 'Мини ПК MSI Cubi N JSL-041RU', 1);
 
-INSERT INTO Inventory.EquipmentUnit (IdEquipmentUnit, Series, Number, StatusId, AudienceId, StateId, EquipmentId) VALUES
-                                                                                 (1, 3245, '234H', 1, 2, 1, 2),
-                                                                                 (2, 2222, 'G12', 1, 2, 1, 2),
-                                                                                 (3, 2333, 'FS', 1, 2, 2, 2),
-                                                                                 (4, 1244, '333', 1, 2, 2, 1),
-                                                                                 (5, 3245, '2', 1, 2, 1, 2),
-                                                                                 (6, 2332, '123', 1, 2, 1, 1);
+INSERT INTO Inventory.EquipmentUnit (IdEquipmentUnit, SerialNumber, InventoryNumber,
+                                     AvailabilityId, TrainingCenterId, StateId, EquipmentId) VALUES
+                                                                                 (1, '323425', 'P-112-1', 1, 2, 1, 2),
+                                                                                 (2, '232222', 'P-234-1', 1, 2, 1, 2),
+                                                                                 (3, '232333', 'P-302-1', 1, 2, 2, 2),
+                                                                                 (4, '124432', 'PK-222-1', 1, 2, 2, 1),
+                                                                                 (5, '324325', 'P-303-1', 1, 2, 1, 2),
+                                                                                 (6, '233222', 'PK-248-24', 1, 2, 1, 1);
 
 INSERT INTO Inventory.Inventory (IdInventory, EventDate, CommissionId) VALUES
                                                                            (1, '2020-01-01', 1),

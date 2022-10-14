@@ -19,7 +19,7 @@ public class EquipmentControlPageViewModel : ViewModelBase, IRoutableViewModel
     private List<EquipmentType> EquipmentTypes { get; set; }
     
     private Equipment _selectedValue;
-    public Equipment SelectedValue
+    private Equipment SelectedValue
     {
         get => _selectedValue;
         set
@@ -27,12 +27,13 @@ public class EquipmentControlPageViewModel : ViewModelBase, IRoutableViewModel
             if (_selectedValue == value) return;
             _selectedValue = value;
 
-            Name = value.Name!;
+            if (value == null) return;
+            Model = value.Model!;
             EquipmentType = value.EquipmentType!;
         }
     }
     
-    private string Name { get; set; }
+    private string Model { get; set; }
     private EquipmentType EquipmentType { get; set; }
     
     private ICommand OnClickBtnInsert { get; set; }
@@ -57,7 +58,7 @@ public class EquipmentControlPageViewModel : ViewModelBase, IRoutableViewModel
     {
         Equipment inserting = new Equipment()
         {
-            Name = Name, 
+            Model = Model, 
             EquipmentType = EquipmentType
         };
         Equipments.Add(inserting);
@@ -71,7 +72,7 @@ public class EquipmentControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Update()
     {
-        SelectedValue.Name = Name;
+        SelectedValue.Model = Model;
         SelectedValue.EquipmentType = EquipmentType;
         Db.Equipments!.Update(SelectedValue);
         try { Db.SaveChanges(); } catch (Exception ex) {

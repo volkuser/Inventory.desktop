@@ -17,14 +17,15 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
     private ObservableCollection<Employee> Employees { get; set; }
 
     private Employee _selectedValue;
-    public Employee SelectedValue
+    private Employee SelectedValue
     {
         get => _selectedValue;
         set
         {
             if (_selectedValue == value) return;
             _selectedValue = value;
-            
+         
+            if (value == null) return;
             LastName = value.LastName!;
             FirstName = value.FirstName!;
             Email = value.Email!;

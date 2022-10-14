@@ -16,7 +16,7 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
     private ObservableCollection<EquipmentType> EquipmentTypes { get; set; }
 
     private EquipmentType _selectedValue;
-    public EquipmentType SelectedValue
+    private EquipmentType SelectedValue
     {
         get => _selectedValue;
         set
@@ -24,6 +24,7 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
             if (_selectedValue == value) return;
             _selectedValue = value;
             
+            if (value == null) return;
             Name = value.Name!;
         }
     }

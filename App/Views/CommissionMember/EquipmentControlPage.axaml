@@ -15,8 +15,8 @@
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserSortColumns="True"
                   AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedValue}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                <DataGridTemplateColumn Header="Тип оборудоания">
+                <DataGridTextColumn Header="Модель" Binding="{Binding Model}"/>
+                <DataGridTemplateColumn Header="Тип оборудования">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock DataContext="{Binding EquipmentType}" 
@@ -28,8 +28,8 @@
         </DataGrid>
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Orientation="Vertical"
                     VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <TextBlock Text="Наименование"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBlock Text="Модель"/>
+            <TextBox Text="{Binding Model}"/>
             <TextBlock Text="Тип оборудования"/>
             <ComboBox SelectedItem="{Binding EquipmentType}" Items="{Binding EquipmentTypes}">
                 <ComboBox.ItemTemplate>

@@ -67,13 +67,6 @@ public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
         AdditionForBtnBackViewHistory(true);
     }
     
-    public void OpnAudienceControlPage()
-    {
-        var viewModel = new AudienceControlPageViewModel(this);
-        Router.Navigate.Execute(viewModel);
-        AdditionForBtnBackViewHistory(true);
-    }
-    
     public void OpnEquipmentControlPage()
     {
         var viewModel = new EquipmentControlPageViewModel(this);

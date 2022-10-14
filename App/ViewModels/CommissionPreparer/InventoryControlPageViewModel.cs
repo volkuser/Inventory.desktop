@@ -19,7 +19,7 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
     private List<Commission> Commissions { get; set; }
 
     private Inventory _selectedValue;
-    public Inventory SelectedValue
+    private Inventory SelectedValue
     {
         get => _selectedValue;
         set
@@ -27,6 +27,7 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
             if (_selectedValue == value) return;
             _selectedValue = value;
 
+            if (value == null) return;
             EventDate = new DateTimeOffset(value.EventDate);
             Commission = value.Commission;
         }

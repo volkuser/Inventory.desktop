@@ -32,7 +32,6 @@ public class App : Application
         
         Locator.CurrentMutable.Register<IViewFor<CommissionMemberMenuPageViewModel>>(() 
             => new CommissionMemberMenuPage());
-        Locator.CurrentMutable.Register<IViewFor<AudienceControlPageViewModel>>(() => new AudienceControlPage());
         Locator.CurrentMutable.Register<IViewFor<EquipmentControlPageViewModel>>(() 
             => new EquipmentControlPage());
         Locator.CurrentMutable.Register<IViewFor<EquipmentTypeControlViewModel>>(() 

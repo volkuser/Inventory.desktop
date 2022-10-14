@@ -16,7 +16,7 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
     private ObservableCollection<Commission> Commissions { get; set; }
 
     private Commission _selectedValue;
-    public Commission SelectedValue
+    private Commission SelectedValue
     {
         get => _selectedValue;
         set
@@ -24,6 +24,7 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
             if (_selectedValue == value) return;
             _selectedValue = value;
             
+            if (value == null) return;
             CommissionFormationDate = new DateTimeOffset(value.CommissionFormationDate);
         }
     }

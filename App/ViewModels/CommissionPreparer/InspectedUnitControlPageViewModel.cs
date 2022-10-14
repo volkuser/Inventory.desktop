@@ -20,7 +20,7 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
     private List<EquipmentUnit> EquipmentUnits { get; set; }
 
     private InspectedUnit _selectedValue;
-    public InspectedUnit SelectedValue
+    private InspectedUnit SelectedValue
     {
         get => _selectedValue;
         set
@@ -28,6 +28,7 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
             if (_selectedValue == value) return;
             _selectedValue = value;
 
+            if (value == null) return;
             Inventory = value.Inventory;
             EquipmentUnit = value.EquipmentUnit;
         }

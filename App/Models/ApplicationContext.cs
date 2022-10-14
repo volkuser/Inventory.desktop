@@ -5,7 +5,6 @@ namespace App.Models;
 
 public class ApplicationContext : DbContext
 {
-    public DbSet<Audience>? Audiences { get; set; }
     public DbSet<Commission>? Commissions { get; set; }
     public DbSet<CommissionMember>? CommissionMembers { get; set; }
     public DbSet<Employee>? Employees { get; set; }
@@ -16,7 +15,7 @@ public class ApplicationContext : DbContext
     public DbSet<Inventory>? Inventories { get; set; }
     public DbSet<Role>? Roles { get; set; }
     public DbSet<State>? States { get; set; }
-    public DbSet<Status>? Statuses { get; set; }
+    public DbSet<Availability>? Availabilities { get; set; }
     public DbSet<TrainingCenter>? TrainingCenters { get; set; }
     public DbSet<User>? Users { get; set; }
     

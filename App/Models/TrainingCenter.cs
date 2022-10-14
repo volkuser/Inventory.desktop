@@ -6,7 +6,7 @@ namespace App.Models;
 [Table("TrainingCenter")]
 public class TrainingCenter
 {
-    [Key] [Column("TrainingCenter")]
+    [Key] [Column("IdTrainingCenter")]
     public int IdTrainingCenter { get; set; }
     [Column("Address")]
     public string? Address { get; set; }

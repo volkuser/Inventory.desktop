@@ -20,7 +20,7 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
     private List<Employee> Employees { get; set; }
 
     private Models.CommissionMember _selectedValue;
-    public Models.CommissionMember SelectedValue
+    private Models.CommissionMember SelectedValue
     {
         get => _selectedValue;
         set
@@ -28,6 +28,7 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
             if (_selectedValue == value) return;
             _selectedValue = value;
 
+            if (value == null) return;
             Commission = value.Commission;
             Employee = value.Employee;
         }

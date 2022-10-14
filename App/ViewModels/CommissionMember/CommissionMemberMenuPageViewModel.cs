@@ -9,8 +9,6 @@ public class CommissionMemberMenuPageViewModel : ViewModelBase, IRoutableViewMod
 {
     public string UrlPathSegment => "commissionMemberMenu";
     public IScreen? HostScreen { get; }
-    
-    private ICommand OnClickBtnAudienceControl { get; set; }
     private ICommand OnClickBtnEquipmentControl { get; set; }
     private ICommand OnClickBtnEquipmentTypeControl { get; set; }
     private ICommand OnClickBtnEquipmentUnitControl { get; set; }
@@ -19,7 +17,6 @@ public class CommissionMemberMenuPageViewModel : ViewModelBase, IRoutableViewMod
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-        OnClickBtnAudienceControl = ReactiveCommand.Create(container.OpnAudienceControlPage);
         OnClickBtnEquipmentControl = ReactiveCommand.Create(container.OpnEquipmentControlPage);
         OnClickBtnEquipmentTypeControl = ReactiveCommand.Create(container.OpnEquipmentTypeControlPage);
         OnClickBtnEquipmentUnitControl = ReactiveCommand.Create(() 
