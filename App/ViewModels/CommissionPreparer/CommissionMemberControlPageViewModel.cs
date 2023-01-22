@@ -63,9 +63,12 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
             Commission = Commission,
             Employee = Employee
         };
-        CommissionMembers.Add(inserting);
-        Db.CommissionMembers!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.CommissionMembers!.Add(inserting);
+            Db.SaveChanges();
+            CommissionMembers.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -74,10 +77,13 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
 
     private void Update()
     {
-        SelectedValue.Commission = Commission;
-        SelectedValue.Employee = Employee;
-        Db.CommissionMembers!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.Commission = Commission;
+            SelectedValue.Employee = Employee;
+            Db.CommissionMembers!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -89,9 +95,12 @@ public class CommissionMemberControlPageViewModel : ViewModelBase, IRoutableView
 
     private void Delete()
     {
-        CommissionMembers.Remove(SelectedValue);
-        Db.CommissionMembers!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.CommissionMembers!.Remove(SelectedValue);
+            Db.SaveChanges();
+            CommissionMembers.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

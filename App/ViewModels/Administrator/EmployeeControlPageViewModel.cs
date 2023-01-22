@@ -60,9 +60,12 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
             FirstName = FirstName,
             Email = Email
         };
-        Employees.Add(inserting);
-        Db.Employees!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Employees!.Add(inserting);
+            Db.SaveChanges();
+            Employees.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -71,11 +74,14 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Update()
     {
-        SelectedValue.LastName = LastName;
-        SelectedValue.FirstName = FirstName;
-        SelectedValue.Email = Email;
-        Db.Employees!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Employees!.Update(SelectedValue);
+            Db.SaveChanges();
+            SelectedValue.LastName = LastName;
+            SelectedValue.FirstName = FirstName;
+            SelectedValue.Email = Email;
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -87,9 +93,12 @@ public class EmployeeControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Delete()
     {
-        Employees.Remove(SelectedValue);
-        Db.Employees!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Employees!.Remove(SelectedValue);
+            Db.SaveChanges();
+            Employees.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

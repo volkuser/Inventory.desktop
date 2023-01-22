@@ -27,9 +27,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel DataContext="{Binding EquipmentUnit}" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Series}"/>
-                                <TextBlock Text=" "/>
-                                <TextBlock Text="{Binding Number}"/>
+                                <TextBlock Text="{Binding InventoryNumber}"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -50,9 +48,7 @@
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Series}"/>
-                            <TextBlock Text=" "/>
-                            <TextBlock Text="{Binding Number}"/>
+                            <TextBlock Text="{Binding InventoryNumber}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>

@@ -13,14 +13,9 @@ public class Inventory
     public DateTime EventDate { get; set; }
     [NotMapped]
     public DateTimeOffset OffsetEventDate => new DateTimeOffset(EventDate);
-    [Column("EndingDate")]
-    public DateTime EndingDate { get; set; }
-    [NotMapped]
-    public DateTimeOffset OffsetEndingDate => new DateTimeOffset(EndingDate);
+    
     [Column("CommissionId")]
     public int CommissionId { get; set; }
     [ForeignKey("CommissionId")]
     public Commission? Commission { get; set; }
-    [Column("ExecutiveDecision")]
-    public string? ExecutiveDecision { get; set; }
 }

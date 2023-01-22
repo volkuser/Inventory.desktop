@@ -12,10 +12,6 @@ public class Employee
     public string? LastName { get; set; }
     [Column("FirstName")]
     public string? FirstName { get; set; }
-    [Column("Patronymic")]
-    public string? Patronymic { get; set; }
-    [Column("DocumentPositionId")]
-    public int DocumentPositionId { get; set; }
-    [ForeignKey("DocumentPositionId")]
-    public DocumentPosition? DocumentPosition { get; set; }
+    [Column("Email")]
+    public string? Email { get; set; }
 }

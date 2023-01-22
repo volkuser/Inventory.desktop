@@ -53,9 +53,12 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
         {
             Address = Address
         };
-        TrainingCenters.Add(inserting);
-        Db.TrainingCenters!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.TrainingCenters!.Add(inserting);
+            Db.SaveChanges();
+            TrainingCenters.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -64,9 +67,12 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
 
     private void Update()
     {
-        SelectedValue.Address = Address;
-        Db.TrainingCenters!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.TrainingCenters!.Update(SelectedValue);
+            Db.SaveChanges();
+            SelectedValue.Address = Address;
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -78,9 +84,12 @@ public class TrainingCenterControlPageViewModel : ViewModelBase, IRoutableViewMo
 
     private void Delete()
     {
-        TrainingCenters.Remove(SelectedValue);
-        Db.TrainingCenters!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.TrainingCenters!.Remove(SelectedValue);
+            Db.SaveChanges();
+            TrainingCenters.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

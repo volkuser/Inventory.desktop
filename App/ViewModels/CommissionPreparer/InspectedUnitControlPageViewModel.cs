@@ -63,9 +63,12 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
             Inventory = Inventory,
             EquipmentUnit = EquipmentUnit
         };
-        InspectedUnits.Add(inserting);
-        Db.InspectedUnits!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.InspectedUnits!.Add(inserting);
+            Db.SaveChanges();
+            InspectedUnits.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -74,10 +77,13 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
 
     private void Update()
     {
-        SelectedValue.Inventory = Inventory;
-        SelectedValue.EquipmentUnit = EquipmentUnit;
-        Db.InspectedUnits!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.Inventory = Inventory;
+            SelectedValue.EquipmentUnit = EquipmentUnit;
+            Db.InspectedUnits!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -89,9 +95,12 @@ public class InspectedUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
 
     private void Delete()
     {
-        InspectedUnits.Remove(SelectedValue);
-        Db.InspectedUnits!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.InspectedUnits!.Remove(SelectedValue);
+            Db.SaveChanges();
+            InspectedUnits.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

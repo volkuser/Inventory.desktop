@@ -61,9 +61,12 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
             EventDate = EventDate.Date,
             Commission = Commission
         };
-        Inventories.Add(inserting);
-        Db.Inventories!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Inventories!.Add(inserting);
+            Db.SaveChanges();
+            Inventories.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -72,9 +75,12 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Update()
     {
-        SelectedValue.EventDate = EventDate.Date;
-        Db.Inventories!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.EventDate = EventDate.Date;
+            Db.Inventories!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -86,9 +92,12 @@ public class InventoryControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Delete()
     {
-        Inventories.Remove(SelectedValue);
-        Db.Inventories!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Inventories!.Remove(SelectedValue);
+            Db.SaveChanges();
+            Inventories.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

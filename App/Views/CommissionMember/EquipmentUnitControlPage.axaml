@@ -10,6 +10,10 @@
             <Button Content="Обновить" Command="{Binding OnClickBtnUpdate}"/>
             <TextBlock Text=" "/>
             <Button Content="Удалить" Command="{Binding OnClickBtnDelete}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Фильтровать" Command="{Binding OnClickBtnFilter}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Искать по инвентарному номеру" Command="{Binding OnClickBtnSearch}"/>
         </StackPanel>
         <DataGrid Grid.Row="1" Grid.Column="1" Items="{Binding EquipmentUnits}"
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserSortColumns="True"
@@ -36,13 +40,6 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock DataContext="{Binding Availability}" Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Состояние">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock DataContext="{Binding State}" Text="{Binding Name}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -41,16 +42,18 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
         }
     }
 
-    private string SerialNumber { get; set; }
-    private string InventoryNumber { get; set; }
-    private Availability Availability { get; set; }
-    private TrainingCenter TrainingCenter { get; set; }
-    private State State { get; set; }
-    private Equipment Equipment { get; set; }
+    private string? SerialNumber { get; set; }
+    private string? InventoryNumber { get; set; }
+    private Availability? Availability { get; set; }
+    private TrainingCenter? TrainingCenter { get; set; }
+    private State? State { get; set; }
+    private Equipment? Equipment { get; set; }
     
     private ICommand OnClickBtnInsert { get; set; }
     private ICommand OnClickBtnUpdate { get; set; }
     private ICommand OnClickBtnDelete { get; set; }
+    private ICommand OnClickBtnFilter { get; set; }
+    private ICommand OnClickBtnSearch { get; set; }
     
     public EquipmentUnitControlPageViewModel(User currentUser, IScreen? screen = null)
     {
@@ -67,6 +70,8 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
         OnClickBtnInsert = ReactiveCommand.Create(Insert);
         OnClickBtnUpdate = ReactiveCommand.Create(Update);
         OnClickBtnDelete = ReactiveCommand.Create(Delete);
+        OnClickBtnFilter = ReactiveCommand.Create(Filter);
+        OnClickBtnSearch = ReactiveCommand.Create(Search);
     }
     
     private void Insert()
@@ -80,9 +85,12 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
             State = State,
             Equipment = Equipment,
         };
-        EquipmentUnits.Add(inserting);
-        Db.EquipmentUnits!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.EquipmentUnits!.Add(inserting);
+            Db.SaveChanges();
+            EquipmentUnits.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -91,14 +99,17 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
 
     private void Update()
     {
-        SelectedValue.SerialNumber = SerialNumber;
-        SelectedValue.InventoryNumber = InventoryNumber;
-        SelectedValue.Availability = Availability;
-        SelectedValue.TrainingCenter = TrainingCenter;
-        SelectedValue.State = State;
-        SelectedValue.Equipment = Equipment;
-        Db.EquipmentUnits!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.SerialNumber = SerialNumber;
+            SelectedValue.InventoryNumber = InventoryNumber;
+            SelectedValue.Availability = Availability;
+            SelectedValue.TrainingCenter = TrainingCenter;
+            SelectedValue.State = State;
+            SelectedValue.Equipment = Equipment;
+            Db.EquipmentUnits!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -110,12 +121,35 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
 
     private void Delete()
     {
-        EquipmentUnits.Remove(SelectedValue);
-        Db.EquipmentUnits!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.EquipmentUnits!.Remove(SelectedValue);
+            Db.SaveChanges();
+            EquipmentUnits.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
         }
+    }
+
+    private void Filter()
+    {
+        EquipmentUnits.Clear();
+        EquipmentUnits = new ObservableCollection<EquipmentUnit>(Db.EquipmentUnits!.Where(x 
+            => (SerialNumber == null || x.SerialNumber!.Equals(SerialNumber)) 
+               && (InventoryNumber == null || x.InventoryNumber!.Equals(InventoryNumber))
+               && (Availability == null || x.Availability!.Equals(Availability)) 
+               && (TrainingCenter == null || x.TrainingCenter!.Equals(TrainingCenter))
+               && (State == null || x.State!.Equals(State)) 
+               && (Equipment == null || x.Equipment!.Equals(Equipment))));
+    }
+
+    private void Search()
+    {
+        if (InventoryNumber != null) return;
+        EquipmentUnits.Clear();
+        EquipmentUnits = new ObservableCollection<EquipmentUnit>(Db.EquipmentUnits!.Where(x
+            => x.InventoryNumber!.Contains(InventoryNumber!)));
     }
 }    

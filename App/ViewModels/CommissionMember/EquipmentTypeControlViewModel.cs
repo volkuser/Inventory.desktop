@@ -53,9 +53,13 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
         {
             Name = Name
         };
-        EquipmentTypes.Add(inserting);
-        Db.EquipmentTypes!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+
+        try
+        {
+            Db.EquipmentTypes!.Add(inserting);
+            Db.SaveChanges();
+            EquipmentTypes.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -64,9 +68,12 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
 
     private void Update()
     {
-        SelectedValue.Name = Name;
-        Db.EquipmentTypes!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.Name = Name;
+            Db.EquipmentTypes!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -78,9 +85,12 @@ public class EquipmentTypeControlViewModel : ViewModelBase, IRoutableViewModel
 
     private void Delete()
     {
-        EquipmentTypes.Remove(SelectedValue);
-        Db.EquipmentTypes!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.EquipmentTypes!.Remove(SelectedValue);
+            Db.SaveChanges();
+            EquipmentTypes.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

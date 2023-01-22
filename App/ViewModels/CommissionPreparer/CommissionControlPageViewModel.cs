@@ -53,9 +53,12 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
         {
             CommissionFormationDate = CommissionFormationDate.Date
         };
-        Commissions.Add(inserting);
-        Db.Commissions!.Add(inserting);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Commissions!.Add(inserting);
+            Db.SaveChanges();
+            Commissions.Add(inserting);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -64,9 +67,12 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Update()
     {
-        SelectedValue.CommissionFormationDate = CommissionFormationDate.Date;
-        Db.Commissions!.Update(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            SelectedValue.CommissionFormationDate = CommissionFormationDate.Date;
+            Db.Commissions!.Update(SelectedValue);
+            Db.SaveChanges();
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();
@@ -78,9 +84,12 @@ public class CommissionControlPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void Delete()
     {
-        Commissions.Remove(SelectedValue);
-        Db.Commissions!.Remove(SelectedValue);
-        try { Db.SaveChanges(); } catch (Exception ex) {
+        try
+        {
+            Db.Commissions!.Remove(SelectedValue);
+            Db.SaveChanges();
+            Commissions.Remove(SelectedValue);
+        } catch (Exception ex) {
             var messageBox = MessageBox.Avalonia.MessageBoxManager
                 .GetMessageBoxStandardWindow("Exception", ex.Message);
             messageBox.Show();

@@ -10,14 +10,8 @@ public class Equipment
     public int IdEquipment { get; set; }
     [Column("Model")]
     public string? Model { get; set; }
+    
     [Column("EquipmentTypeId")]
     public int EquipmentTypeId { get; set; }
-    [ForeignKey("EquipmentTypeId")]
     public EquipmentType? EquipmentType { get; set; }
-    [Column("UnitId")]
-    public int UnitId { get; set; }
-    [ForeignKey("UnitId")]
-    public Unit? Unit { get; set; }
-    [Column("Specifications")]
-    public byte[]? Specifications { get; set; }
 }
