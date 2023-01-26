@@ -19,7 +19,6 @@
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserSortColumns="True"
                   AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedValue}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}"/>
                 <DataGridTextColumn Header="Инвентарный номер" Binding="{Binding InventoryNumber}"/>
                 <DataGridTemplateColumn Header="Оборудование">
                     <DataGridTemplateColumn.CellTemplate>

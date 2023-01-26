@@ -147,9 +147,9 @@ public class EquipmentUnitControlPageViewModel : ViewModelBase, IRoutableViewMod
 
     private void Search()
     {
-        if (InventoryNumber != null) return;
         EquipmentUnits.Clear();
-        EquipmentUnits = new ObservableCollection<EquipmentUnit>(Db.EquipmentUnits!.Where(x
+        if (InventoryNumber == null) EquipmentUnits = new ObservableCollection<EquipmentUnit>(Db.EquipmentUnits!);
+        else EquipmentUnits = new ObservableCollection<EquipmentUnit>(Db.EquipmentUnits!.Where(x
             => x.InventoryNumber!.Contains(InventoryNumber!)));
     }
 }    
